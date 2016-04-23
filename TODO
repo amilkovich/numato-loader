@@ -1,0 +1,2 @@
+combine write_enable and write_disable into set_write_enable(enabled)
+add -e [-b] as optional argument, -b is bulk erase, -e is quick erase
