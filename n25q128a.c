@@ -151,13 +151,16 @@ int n25q128a_bulk_erase(struct mpsse_context *mpsse) {
 			goto done;
 	} while (status & N25Q128A_STATUS_WRITING);
 
-	if (n25q128a_read_flag_status(mpsse, &flag_status) != MPSSE_OK)
+	ret = n25q128a_read_flag_status(mpsse, &flag_status);
+	if (ret != MPSSE_OK)
 		goto done;
 	if (flag_status & N25Q128A_FLAG_ERASE_FAIL) {
 		ret = MPSSE_FAIL;
 		mpsse->ftdi.error_str = "flash bulk erase failed";
 		goto done;
 	}
+
+	goto done;
 
 error:
 	Stop(mpsse);
@@ -189,13 +192,16 @@ int n25q128a_sector_erase(struct mpsse_context *mpsse, unsigned char sector) {
 			goto done;
 	} while (status & N25Q128A_STATUS_WRITING);
 
-	if (n25q128a_read_flag_status(mpsse, &flag_status) != MPSSE_OK)
+	ret = n25q128a_read_flag_status(mpsse, &flag_status);
+	if (ret != MPSSE_OK)
 		goto done;
 	if (flag_status & N25Q128A_FLAG_ERASE_FAIL) {
 		ret = MPSSE_FAIL;
 		mpsse->ftdi.error_str = "flash sector erase failed";
 		goto done;
 	}
+
+	goto done;
 
 error:
 	Stop(mpsse);
@@ -232,7 +238,8 @@ int n25q128a_page_program(struct mpsse_context *mpsse, unsigned short page,
 			goto done;
 	} while (status & N25Q128A_STATUS_WRITING);
 
-	if (n25q128a_read_flag_status(mpsse, &flag_status) != MPSSE_OK)
+	ret = n25q128a_read_flag_status(mpsse, &flag_status);
+	if (ret != MPSSE_OK)
 		goto done;
 	if (flag_status & N25Q128A_FLAG_PROGRAM_FAIL) {
 		ret = MPSSE_FAIL;
