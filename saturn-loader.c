@@ -15,7 +15,8 @@
 int erase_flash(struct mpsse_context *mpsse) {
 	int ret;
 
-	for (unsigned char sector = 0; sector < N25Q128A_SECTORS - 1; sector++) {
+	for (unsigned char sector = 0; sector < N25Q128A_SECTORS - 1;
+	     sector++) {
 		char *sector_data;
 		ret = n25q128a_read(mpsse, &sector_data,
 				    sector * N25Q128A_BYTES_PER_SECTOR,
