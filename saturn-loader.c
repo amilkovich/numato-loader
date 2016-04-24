@@ -141,6 +141,7 @@ void list_devices() {
 	}
 
 	dev_current = dev_list;
+	num_devices = 0;
 	while (dev_current) {
 		char manufacturer[255];
 		char description[255];
@@ -155,11 +156,14 @@ void list_devices() {
 		}
 
 		if (strcmp(DESCRIPTION, description) == 0)
-			printf("%s (%s, %s)\n", description, manufacturer,
-			       serial);
+			printf("%d: %s (%s, %s)\n", num_devices++, description,
+			       manufacturer, serial);
 
 		dev_current = dev_current->next;
 	}
+
+	if (!num_devices)
+		printf("unable to find saturn device!\n");
 
 done:
 	ftdi_list_free(&dev_list);
