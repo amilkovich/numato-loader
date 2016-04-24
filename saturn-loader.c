@@ -352,9 +352,9 @@ void flash(char *file, unsigned char skip_validation) {
 	}
 
 	printf("success!\n");
-	free(flash_data);
 	if (set_spartan_program_b(mpsse, 1) != MPSSE_OK)
 		goto program_b_error_quiet;
+	free(flash_data);
 	Close(mpsse);
 	return;
 
@@ -362,9 +362,9 @@ error:
 	printf("failed!\n");
 	fprintf(stderr, "mpsse error: %s\n", ErrorString(mpsse));
 validation_error:
-	free(flash_data);
 	if (set_spartan_program_b(mpsse, 1) != MPSSE_OK)
 		goto program_b_error_quiet;
+	free(flash_data);
 	Close(mpsse);
 	exit(1);
 program_b_error:
@@ -372,6 +372,7 @@ program_b_error:
 program_b_error_quiet:
 	fprintf(stderr, "error: unable to change PROGRAM_B pin!\n");
 	fprintf(stderr, "mpsse error: %s\n", ErrorString(mpsse));
+	free(flash_data);
 	Close(mpsse);
 	exit(1);
 }
