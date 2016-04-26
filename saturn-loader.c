@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "n25q128a.h"
 #include <string.h>
+#include <signal.h>
 
 #define VID 0x0403
 #define PID 0x6010
@@ -394,9 +395,17 @@ void usage(void) {
 	exit(1);
 }
 
+void sigint_handler(int s) {
+	char msg[] = "please wait..\n";
+	signal(SIGINT, sigint_handler);
+	write(STDOUT_FILENO, msg, sizeof(msg));
+}
+
 int main(int argc, char *argv[]) {
 	char *file_name = NULL;
 	unsigned char options = 0x00;
+
+	signal(SIGINT, sigint_handler);
 
 	if (argc < 2)
 		usage();
