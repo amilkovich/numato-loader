@@ -396,7 +396,7 @@ void usage(void) {
 }
 
 void sigint_handler(int s) {
-	char msg[] = "please wait..\n";
+	char msg[] = "\nplease wait..";
 	signal(SIGINT, sigint_handler);
 	write(STDOUT_FILENO, msg, sizeof(msg) - 1);
 }
