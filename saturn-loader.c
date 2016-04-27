@@ -398,7 +398,7 @@ void usage(void) {
 void sigint_handler(int s) {
 	char msg[] = "please wait..\n";
 	signal(SIGINT, sigint_handler);
-	write(STDOUT_FILENO, msg, sizeof(msg));
+	write(STDOUT_FILENO, msg, sizeof(msg) - 1);
 }
 
 int main(int argc, char *argv[]) {
