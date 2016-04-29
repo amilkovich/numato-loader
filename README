@@ -20,14 +20,12 @@ for details.
 Currently, the library dependencies are:
 
 libftdi (LGPLv2.1, dynamically linked)
-libmpsse (modified BSD license, statically linked and included in binary form;
-see libmpsse/LICENSE for details)
+libmpsse (modified BSD license, statically linked)
 
 What architectures does saturn-loader support?
 
-Currently the saturn-loader Makefile has support for x86_64. If you need this to
-run on another architecture; make the changes and do a pull request, or, contact
-me and (depending on my schedule) I may be able to help. :)
+Currently saturn-loader has been successfully built and tested on x86_64, i686,
+and armv7l (Raspberry Pi 2).
 
 How do you use saturn-loader?
 

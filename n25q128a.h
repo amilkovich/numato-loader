@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include "mpsse.h"
 #include <string.h>
+#include <stdlib.h>
 
 #define N25Q128A_MANUFACTURER_ID   0x20
 #define N25Q128A_DEVICE_ID         0x18ba

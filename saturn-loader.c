@@ -2,6 +2,7 @@
 #include "n25q128a.h"
 #include <string.h>
 #include <signal.h>
+#include <unistd.h>
 
 #define VID 0x0403
 #define PID 0x6010
@@ -459,7 +460,7 @@ int main(int argc, char *argv[]) {
 			usage();
 		break;
 		case OPTIONS_VERSION:
-			printf("saturn-loader 0.5 beta, © 2016 Andrew Milkovich"
+			printf("saturn-loader 0.6 beta, © 2016 Andrew Milkovich"
 			       ", see LICENSE for details\n");
 			exit(0);
 		break;
