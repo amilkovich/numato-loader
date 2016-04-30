@@ -10,12 +10,12 @@ LIBMPSSE_URL = https://github.com/devttys0/libmpsse/archive/master.zip
 all: saturn-loader
 
 libmpsse-master.zip:
-	@wget -O libmpsse-master.zip $(LIBMPSSE_URL)
+	wget -O libmpsse-master.zip $(LIBMPSSE_URL)
 
 libmpsse-master: libmpsse-master.zip
-	@unzip -o libmpsse-master.zip
-	@cd libmpsse-master/src; CFLAGS=-DLIBFTDI1=$$\(LIBFTDI1\) ./configure --disable-python
-	@make -C libmpsse-master/src
+	unzip -o libmpsse-master.zip
+	cd libmpsse-master/src; CFLAGS=-DLIBFTDI1=$$\(LIBFTDI1\) ./configure --disable-python
+	make -C libmpsse-master/src
 
 $(LIBMPSSE_ARCHIVE): libmpsse-master
 
