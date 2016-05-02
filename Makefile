@@ -1,4 +1,4 @@
-VERSION = 0.5
+VERSION = "0.6 beta"
 SRC = saturn-loader.c n25q128a.c
 OBJ = $(SRC:.c=.o)
 LIBS = -lftdi1 $(LIBMPSSE_ARCHIVE)
