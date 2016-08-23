@@ -1,6 +1,6 @@
 ## saturn-loader
 
-Flashing utility for Numato Lab Saturn FPGA boards
+Flashing utility for Numato Lab Saturn FPGA boards.
 
 ## FAQ
 
