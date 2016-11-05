@@ -1,5 +1,5 @@
 VERSION = "0.6 beta"
-SRC = saturn-loader.c n25q128a.c
+SRC = numato-loader.c n25q128a.c
 OBJ = $(SRC:.c=.o)
 LIBS = -lftdi1 $(LIBMPSSE_ARCHIVE)
 CFLAGS = -std=c11 -pedantic -Wall -Os -DVERSION=\"$(VERSION)\" -DLIBFTDI1=1 -Ilibmpsse-master/src
@@ -7,7 +7,7 @@ LDFLAGS = -s $(LIBS)
 LIBMPSSE_ARCHIVE = libmpsse-master/src/libmpsse.a
 LIBMPSSE_URL = https://github.com/devttys0/libmpsse/archive/master.zip
 
-all: saturn-loader
+all: numato-loader
 
 libmpsse-master.zip:
 	wget -O libmpsse-master.zip $(LIBMPSSE_URL)
@@ -22,17 +22,17 @@ $(LIBMPSSE_ARCHIVE): libmpsse-master
 .o: .c
 	$(CC) -c $(CFLAGS) $?
 
-saturn-loader: $(LIBMPSSE_ARCHIVE) $(OBJ)
-	$(CC) -o saturn-loader $(OBJ) $(LDFLAGS)
+numato-loader: $(LIBMPSSE_ARCHIVE) $(OBJ)
+	$(CC) -o numato-loader $(OBJ) $(LDFLAGS)
 
 clean:
-	$(RM) saturn-loader $(OBJ)
+	$(RM) numato-loader $(OBJ)
 
 dist: clean
-	mkdir -p saturn-loader
-	cp saturn-loader.c n25q128a.h n25q128a.c LICENSE TODO Makefile README \
-	saturn-loader
-	tar -cvjf saturn-loader.tar.bz2 saturn-loader
-	$(RM) -r saturn-loader
+	mkdir -p numato-loader
+	cp numato-loader.c n25q128a.h n25q128a.c LICENSE TODO Makefile \
+	README.md numato-loader
+	tar -cvjf numato-loader.tar.bz2 numato-loader
+	$(RM) -r numato-loader
 
 .PHONY: all clean dist

@@ -1,2 +1,6 @@
-combine write_enable and write_disable into set_write_enable(enabled)
+add command line parameter for choosing board
+fix output that refers to saturn/convert over code to be more board generic
+add support for serial boards (mimas/etc)
+make other boards with n25q128a or equivalent flash chips work more generically
 add -e [-b] as optional argument, -b is bulk erase, -e is quick erase
+combine write_enable and write_disable into set_write_enable(enabled)
